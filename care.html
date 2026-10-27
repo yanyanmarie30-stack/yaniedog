@@ -1,0 +1,548 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Care | Happy Paws</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff8f5;
+            color: #49352f;
+            line-height: 1.7;
+        }
+
+        :root {
+            --pink: #d97882;
+            --dark-pink: #b95668;
+            --light-pink: #fbe4e3;
+            --cream: #fff8f5;
+            --brown: #49352f;
+            --muted: #806d67;
+            --white: #ffffff;
+        }
+
+        /* NAVIGATION */
+        nav {
+            background: rgba(255, 255, 255, 0.96);
+            padding: 16px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 3px 20px rgba(73, 53, 47, 0.07);
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: 800;
+            color: var(--dark-pink);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: var(--brown);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--brown);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--dark-pink);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 490px;
+            padding: 65px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 45px;
+            background: linear-gradient(120deg, #fbe4e3, #fff1e9);
+        }
+
+        .hero-content {
+            max-width: 560px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #fff;
+            color: var(--dark-pink);
+            padding: 7px 16px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 58px);
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--brown);
+        }
+
+        .hero h1 span {
+            color: var(--dark-pink);
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 15px;
+            margin-bottom: 28px;
+            max-width: 470px;
+        }
+
+        .hero-button {
+            display: inline-block;
+            background: var(--pink);
+            color: white;
+            text-decoration: none;
+            padding: 13px 25px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 6px 15px rgba(185, 86, 104, 0.2);
+            transition: 0.3s;
+        }
+
+        .hero-button:hover {
+            background: var(--dark-pink);
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            width: 42%;
+            max-width: 430px;
+            height: 330px;
+            object-fit: cover;
+            border-radius: 45% 45% 25px 25px;
+            border: 8px solid white;
+            box-shadow: 0 15px 35px rgba(73, 53, 47, 0.12);
+        }
+
+        /* INTRODUCTION */
+        .intro {
+            text-align: center;
+            padding: 65px 8% 30px;
+        }
+
+        .section-label {
+            color: var(--dark-pink);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .intro h2,
+        .care-heading h2 {
+            font-size: clamp(27px, 4vw, 36px);
+            line-height: 1.3;
+            margin: 10px 0 15px;
+            color: var(--brown);
+        }
+
+        .intro p {
+            max-width: 700px;
+            margin: auto;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* CARE CARDS */
+        .care-section {
+            padding: 30px 8% 75px;
+        }
+
+        .care-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .care-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .care-card {
+            background: var(--white);
+            padding: 28px 24px;
+            border-radius: 20px;
+            border: 1px solid #f5e8e3;
+            box-shadow: 0 6px 22px rgba(73, 53, 47, 0.04);
+            transition: 0.3s;
+        }
+
+        .care-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 14px 30px rgba(185, 86, 104, 0.12);
+        }
+
+        .care-icon {
+            width: 58px;
+            height: 58px;
+            background: var(--light-pink);
+            border-radius: 17px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 29px;
+            margin-bottom: 18px;
+        }
+
+        .care-card h3 {
+            font-size: 17px;
+            margin-bottom: 10px;
+            color: var(--brown);
+        }
+
+        .care-card p {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        /* LOVE BANNER */
+        .love-banner {
+            margin: 0 8% 75px;
+            padding: 38px 30px;
+            background: var(--light-pink);
+            border-radius: 24px;
+            text-align: center;
+        }
+
+        .love-banner h2 {
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .love-banner p {
+            font-size: 14px;
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #49352f;
+            color: #fff3ef;
+            text-align: center;
+            padding: 38px 20px 22px;
+        }
+
+        .footer-logo {
+            font-size: 23px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        footer p {
+            color: #e4ceca;
+            font-size: 12px;
+            margin: 5px 0;
+        }
+
+        .social-link {
+            display: inline-block;
+            margin: 18px 0;
+            padding: 9px 18px;
+            background: #fff;
+            color: #49352f;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--light-pink);
+            transform: translateY(-2px);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.15);
+            margin-top: 20px !important;
+            padding-top: 18px;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 850px) {
+            nav {
+                flex-direction: column;
+                padding: 15px 5%;
+            }
+
+            .nav-links {
+                justify-content: center;
+                gap: 12px 18px;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 50px 7%;
+            }
+
+            .hero-content {
+                max-width: 600px;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-image {
+                width: 85%;
+                max-width: 420px;
+                height: 280px;
+            }
+
+            .care-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 520px) {
+            .nav-links {
+                gap: 10px 14px;
+            }
+
+            .nav-links a {
+                font-size: 11px;
+            }
+
+            .hero {
+                padding: 40px 6%;
+            }
+
+            .hero-image {
+                width: 100%;
+                height: 230px;
+            }
+
+            .care-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .intro {
+                padding: 50px 7% 25px;
+            }
+
+            .care-section {
+                padding: 25px 6% 50px;
+            }
+
+            .love-banner {
+                margin: 0 6% 50px;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="index.html" class="logo">🐾 Happy<span>Paws</span></a>
+
+        <div class="nav-links">
+            <a href="index.html">HOME</a>
+            <a href="breeds.html">DOG BREEDS</a>
+            <a href="gallery.html">GALLERY</a>
+            <a href="care.html" class="active">DOG CARE</a>
+            <a href="about.html">ABOUT US</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="hero-content">
+            <span class="tag">🐶 YOUR DOG'S BEST FRIEND</span>
+
+            <h1>Give Your Dog the <span>Love</span> They Deserve</h1>
+
+            <p>
+                Every wagging tail deserves a happy and healthy life.
+                Discover simple ways to care for your furry friend
+                with love, patience, and attention.
+            </p>
+
+            <a href="#care-tips" class="hero-button">
+                Explore Dog Care Tips →
+            </a>
+        </div>
+
+        <img
+            class="hero-image"
+            src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=900&q=85"
+            alt="Happy golden dog enjoying a sunny day"
+        >
+    </header>
+
+    <!-- INTRODUCTION -->
+    <section class="intro">
+        <span class="section-label">A HAPPY DOG STARTS WITH YOU</span>
+
+        <h2>Proper Dog Care 🐾</h2>
+
+        <p>
+            Taking care of a dog is an important responsibility.
+            Dogs need proper food, exercise, shelter, medical care,
+            and attention to stay healthy and happy. Small acts of
+            kindness every day can make a big difference in your
+            dog's life.
+        </p>
+    </section>
+
+    <!-- DOG CARE TIPS -->
+    <main class="care-section" id="care-tips">
+        <div class="care-heading">
+            <span class="section-label">CARE WITH LOVE</span>
+            <h2>5 Ways to Keep Your Dog Happy</h2>
+        </div>
+
+        <div class="care-grid">
+
+            <article class="care-card">
+                <div class="care-icon">🥣</div>
+                <h3>1. Provide Healthy Food</h3>
+                <p>
+                    Give your dog nutritious, complete food suitable
+                    for its age, size, and health needs. Always provide
+                    fresh, clean drinking water.
+                </p>
+            </article>
+
+            <article class="care-card">
+                <div class="care-icon">🎾</div>
+                <h3>2. Give Regular Exercise</h3>
+                <p>
+                    Walking, playing, and other safe activities help
+                    keep your dog active. Adjust exercise to your
+                    dog's breed, age, and abilities.
+                </p>
+            </article>
+
+            <article class="care-card">
+                <div class="care-icon">🛁</div>
+                <h3>3. Keep Dogs Clean</h3>
+                <p>
+                    Regular brushing, suitable bathing, nail trimming,
+                    and dental care help maintain your dog's cleanliness
+                    and comfort.
+                </p>
+            </article>
+
+            <article class="care-card">
+                <div class="care-icon">🩺</div>
+                <h3>4. Visit the Veterinarian</h3>
+                <p>
+                    Schedule regular veterinary checkups and follow
+                    professional advice about vaccinations, parasite
+                    prevention, and other health needs.
+                </p>
+            </article>
+
+            <article class="care-card">
+                <div class="care-icon">❤️</div>
+                <h3>5. Give Love and Attention</h3>
+                <p>
+                    Dogs need companionship, affection, and patience.
+                    Spend quality time together to build trust and
+                    create a strong bond.
+                </p>
+            </article>
+
+            <article class="care-card">
+                <div class="care-icon">🏡</div>
+                <h3>6. Provide a Safe Home</h3>
+                <p>
+                    Give your dog a comfortable resting place, safe
+                    shelter, and protection from extreme heat, rain,
+                    and other potential dangers.
+                </p>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- CLOSING BANNER -->
+    <section class="love-banner">
+        <h2>🐕 A Little Love Goes a Long Way!</h2>
+
+        <p>
+            Your dog may be only a part of your life, but to your dog,
+            you are family. Give them the care, safety, and affection
+            they deserve every day.
+        </p>
+
+        <a href="about.html" class="hero-button">Learn More About Us ♥</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">🐾 Happy Paws</div>
+
+        <p>Sharing love and knowledge for happier, healthier dogs.</p>
+
+        <p><strong>Author:</strong> Jelian Marie Germinanda</p>
+        <p><strong>Year:</strong> 2026</p>
+        <p><strong>Place:</strong> Miagao, Iloilo, Philippines</p>
+
+        <a
+            class="social-link"
+            href="https://www.facebook.com/jelian.marie.357/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Find us on Facebook ↗
+        </a>
+
+        <p class="copyright">
+            &copy; 2026 Happy Paws. All Rights Reserved.
+        </p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,428 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dog Breeds | Paws & Pals</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #fffaf5;
+    color: #49372c;
+    line-height: 1.7;
+}
+
+/* NAVIGATION */
+nav {
+    background: #fff;
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    box-shadow: 0 3px 15px #0000000c;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #a85d3b;
+}
+
+nav a {
+    text-decoration: none;
+    color: #59473b;
+    margin: 0 8px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #c87951;
+}
+
+/* HERO */
+.hero {
+    min-height: 400px;
+    padding: 70px 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #f5e1dc, #fbeedc);
+}
+
+.hero-content {
+    max-width: 750px;
+}
+
+.tag {
+    display: inline-block;
+    background: #fff;
+    color: #a85d3b;
+    padding: 6px 18px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: clamp(36px, 6vw, 58px);
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #49372c;
+}
+
+.hero h1 span {
+    color: #b86f4b;
+}
+
+.hero p {
+    font-size: 17px;
+    color: #715d50;
+    max-width: 600px;
+    margin: 0 auto 28px;
+}
+
+.btn {
+    display: inline-block;
+    background: #a85d3b;
+    color: white;
+    padding: 12px 27px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #81452d;
+    transform: translateY(-2px);
+}
+
+/* MAIN CONTENT */
+.container {
+    width: 85%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 65px 0;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-heading h2 {
+    font-size: 34px;
+    margin-bottom: 8px;
+}
+
+.section-heading p {
+    color: #877468;
+}
+
+/* INTRO */
+.intro {
+    background: #fff;
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 45px;
+    border-left: 5px solid #c87951;
+}
+
+/* BREED CARDS */
+.breed-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 5px 22px #49372c0d;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 30px #49372c18;
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-content {
+    padding: 22px;
+}
+
+.card h3 {
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+.card p {
+    color: #79695f;
+    font-size: 14px;
+}
+
+.label {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background: #f8e9df;
+    color: #a85d3b;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* BREED LIST */
+.all-breeds {
+    background: #f5e8dc;
+    padding: 35px;
+    border-radius: 20px;
+    margin-top: 50px;
+}
+
+.all-breeds h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.breed-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.breed-list span {
+    background: white;
+    padding: 9px 17px;
+    border-radius: 25px;
+    font-size: 14px;
+}
+
+/* FOOTER */
+footer {
+    background: #49372c;
+    color: #fdf5ee;
+    text-align: center;
+    padding: 35px 20px;
+}
+
+footer h3 {
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+footer p {
+    font-size: 14px;
+    color: #e6d3c5;
+    margin: 5px 0;
+}
+
+footer a {
+    color: #f5c9a9;
+    text-decoration: none;
+}
+
+.social {
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.copyright {
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid #ffffff25;
+}
+
+/* RESPONSIVE */
+@media (max-width: 850px) {
+    .breed-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    nav {
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 560px) {
+    .breed-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        width: 90%;
+        padding: 45px 0;
+    }
+
+    .hero {
+        padding: 60px 6%;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 4px;
+        font-size: 12px;
+    }
+
+    .all-breeds {
+        padding: 22px 12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <div class="logo">🐾 Paws & Pals</div>
+
+    <div>
+        <a href="index.html">HOME</a>
+        <a href="breeds.html">DOG BREEDS</a>
+        <a href="gallery.html">GALLERY</a>
+        <a href="care.html">DOG CARE</a>
+        <a href="about.html">ABOUT US</a>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<header class="hero">
+    <div class="hero-content">
+        <span class="tag">🐶 A WORLD FULL OF WAGS</span>
+
+        <h1>Find Your Perfect <span>Furry Friend</span></h1>
+
+        <p>
+            Discover wonderful dog breeds, learn about their unique
+            personalities, and find the perfect companion for your family.
+        </p>
+
+        <a href="#breeds" class="btn">Explore Dog Breeds ♥</a>
+    </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="container">
+
+    <section class="intro">
+        <h2>Welcome, Dog Lovers! 🐾</h2>
+        <p>
+            Every dog is special! From playful puppies to loyal companions,
+            dogs come in different sizes, colors, and personalities.
+            Explore some of the world's most loved breeds below.
+        </p>
+    </section>
+
+    <section id="breeds">
+        <div class="section-heading">
+            <h2>Popular Dog Breeds</h2>
+            <p>Meet some adorable four-legged companions.</p>
+        </div>
+
+        <div class="breed-grid">
+
+            <article class="card">
+                <img src="https://images.dog.ceo/breeds/retriever-golden/n02099601_3004.jpg"
+                     alt="Golden Retriever">
+                <div class="card-content">
+                    <h3>Golden Retriever</h3>
+                    <p>Friendly, intelligent, and loyal. Golden Retrievers
+                    make wonderful family companions and assistance dogs.</p>
+                    <span class="label">💛 Friendly</span>
+                </div>
+            </article>
+
+            <article class="card">
+                <img src="dogo4.jpg"
+                     alt="Labrador Retriever">
+                <div class="card-content">
+                    <h3>Labrador Retriever</h3>
+                    <p>Energetic, affectionate, and eager to learn.
+                    Labradors love activities and spending time with people.</p>
+                    <span class="label">🎾 Energetic</span>
+                </div>
+            </article>
+
+            <article class="card">
+                <img src="dogo5.jpg"
+                     alt="German Shepherd">
+                <div class="card-content">
+                    <h3>German Shepherd</h3>
+                    <p>Confident, intelligent, and hardworking. This breed
+                    often excels in service, search, and rescue work.</p>
+                    <span class="label">⭐ Intelligent</span>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- MORE BREEDS -->
+    <section class="all-breeds">
+        <h2>More Breeds to Discover 🐕</h2>
+
+        <div class="breed-list">
+            <span>🐶 Bulldog</span>
+            <span>🐾 Beagle</span>
+            <span>❄️ Siberian Husky</span>
+            <span>🎀 Shih Tzu</span>
+            <span>✂️ Poodle</span>
+            <span>🐕 Chihuahua</span>
+            <span>🖤 Rottweiler</span>
+        </div>
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <h3>🐾 Paws & Pals</h3>
+    <p>Made with love for every dog lover.</p>
+    <p>Author: Jelian Marie Germinanda</p>
+    <p>Year: 2026</p>
+    <p>Miagao, Iloilo, Philippines</p>
+
+    <div class="social">
+        <a href="https://www.facebook.com/jelian.marie.357/"
+           target="_blank" rel="noopener noreferrer">
+            Visit us on Facebook ♥
+        </a>
+    </div>
+
+    <div class="copyright">
+        <p>&copy; 2026 Paws & Pals. All Rights Reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

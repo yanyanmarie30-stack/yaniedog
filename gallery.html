@@ -1,0 +1,415 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dog Gallery | Paws & Pals</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #fffaf5;
+            color: #49372c;
+            line-height: 1.7;
+        }
+
+        /* NAVIGATION */
+        nav {
+            background: #ffffff;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            box-shadow: 0 3px 15px #0000000c;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #a85d3b;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #59473b;
+            margin: 0 7px;
+            font-size: 13px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #c87951;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #f5e1dc, #fbeedc);
+            text-align: center;
+            padding: 75px 20px;
+        }
+
+        .hero-label {
+            display: inline-block;
+            background: white;
+            color: #a85d3b;
+            padding: 6px 18px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(35px, 5vw, 55px);
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #b86f4b;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: auto;
+            color: #715d50;
+            font-size: 16px;
+        }
+
+        /* GALLERY SECTION */
+        .gallery-section {
+            max-width: 1250px;
+            width: 88%;
+            margin: auto;
+            padding: 65px 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 38px;
+        }
+
+        .section-heading h2 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .section-heading p {
+            color: #877468;
+        }
+
+        /* PHOTO GRID */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 5px 22px #49372c10;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 28px #49372c20;
+        }
+
+        .image-wrapper {
+            overflow: hidden;
+            height: 260px;
+            background: #f5e1dc;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .gallery-card:hover img {
+            transform: scale(1.07);
+        }
+
+        .card-info {
+            padding: 18px 20px 22px;
+        }
+
+        .card-info h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .card-info p {
+            color: #877468;
+            font-size: 14px;
+        }
+
+        .paw {
+            color: #b86f4b;
+            margin-right: 5px;
+        }
+
+        /* MESSAGE SECTION */
+        .love-note {
+            background: #f5e8dc;
+            text-align: center;
+            padding: 35px 20px;
+            border-radius: 20px;
+            margin-top: 55px;
+        }
+
+        .love-note h2 {
+            margin-bottom: 8px;
+            font-size: 26px;
+        }
+
+        .love-note p {
+            color: #715d50;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #49372c;
+            color: #fffaf5;
+            text-align: center;
+            padding: 35px 20px 20px;
+        }
+
+        footer h3 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        footer p {
+            font-size: 14px;
+            color: #e6d3c5;
+            margin: 4px 0;
+        }
+
+        .facebook {
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .facebook img {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+
+        .facebook img:hover {
+            transform: scale(1.15);
+        }
+
+        .copyright {
+            border-top: 1px solid #ffffff25;
+            margin-top: 20px;
+            padding-top: 15px;
+        }
+
+        /* TABLET */
+        @media (max-width: 900px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            nav {
+                justify-content: center;
+                text-align: center;
+            }
+        }
+
+        /* MOBILE */
+        @media (max-width: 560px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-section {
+                width: 90%;
+                padding: 45px 0;
+            }
+
+            .hero {
+                padding: 55px 20px;
+            }
+
+            .image-wrapper {
+                height: 250px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 4px;
+                font-size: 12px;
+            }
+
+            .section-heading h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">🐾 Paws & Pals</div>
+
+        <div class="nav-links">
+            <a href="index.html">HOME</a>
+            <a href="breeds.html">DOG BREEDS</a>
+            <a href="gallery.html" class="active">GALLERY</a>
+            <a href="care.html">DOG CARE</a>
+            <a href="about.html">ABOUT US</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <span class="hero-label">🐶 PAWS, LOVE & HAPPINESS</span>
+
+        <h1>Our Dog <span>Gallery</span> 🐾</h1>
+
+        <p>
+            A little collection of furry friends, adorable faces,
+            and heartwarming moments that make every day brighter.
+        </p>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="gallery-section">
+
+        <section>
+            <div class="section-heading">
+                <h2>Meet Our Adorable Friends</h2>
+                <p>Every picture tells a story of love and friendship.</p>
+            </div>
+
+            <div class="gallery-grid">
+
+                <!-- DOG 1 -->
+                <article class="gallery-card">
+                    <div class="image-wrapper">
+                        <img src="dog1.jpg" alt="Cute dog looking at the camera">
+                    </div>
+                    <div class="card-info">
+                        <h3><span class="paw">🐾</span>Little Cutie</h3>
+                        <p>A sweet face that makes everyone smile.</p>
+                    </div>
+                </article>
+
+                <!-- DOG 2 -->
+                <article class="gallery-card">
+                    <div class="image-wrapper">
+                        <img src="dog2.jpg" alt="Happy and playful dog">
+                    </div>
+                    <div class="card-info">
+                        <h3><span class="paw">🐾</span>Happy Paws</h3>
+                        <p>Full of energy, joy, and playful moments.</p>
+                    </div>
+                </article>
+
+                <!-- DOG 3 -->
+                <article class="gallery-card">
+                    <div class="image-wrapper">
+                        <img src="dog3.jpg" alt="Small and adorable dog">
+                    </div>
+                    <div class="card-info">
+                        <h3><span class="paw">🐾</span>Tiny Friend</h3>
+                        <p>Small in size, but huge in personality.</p>
+                    </div>
+                </article>
+
+                <!-- DOG 4 -->
+                <article class="gallery-card">
+                    <div class="image-wrapper">
+                        <img src="dog4.jpg" alt="Golden Retriever dog">
+                    </div>
+                    <div class="card-info">
+                        <h3><span class="paw">🐾</span>Golden Beauty</h3>
+                        <p>A loving companion with a heart of gold.</p>
+                    </div>
+                </article>
+
+                <!-- DOG 5 -->
+                <article class="gallery-card">
+                    <div class="image-wrapper">
+                        <img src="dog5.jpg" alt="German Shepherd dog">
+                    </div>
+                    <div class="card-info">
+                        <h3><span class="paw">🐾</span>Loyal Guardian</h3>
+                        <p>Smart, brave, and devoted to their family.</p>
+                    </div>
+                </article>
+
+                <!-- DOG 6 -->
+                <article class="gallery-card">
+                    <div class="image-wrapper">
+                        <img src="dog6.jpg" alt="Labrador Retriever dog">
+                    </div>
+                    <div class="card-info">
+                        <h3><span class="paw">🐾</span>Friendly Buddy</h3>
+                        <p>An affectionate friend who loves adventures.</p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- CLOSING MESSAGE -->
+        <section class="love-note">
+            <h2>Life Is Better With Dogs ❤️</h2>
+            <p>
+                Dogs give us loyalty, comfort, and unconditional love.
+                Let's celebrate our wonderful four-legged friends!
+            </p>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <h3>🐾 Paws & Pals</h3>
+        <p>Made with love for every dog lover.</p>
+        <p>Author: Jelian Marie Germinanda</p>
+        <p>Year: 2026</p>
+        <p>Miagao, Iloilo, Philippines</p>
+
+        <a class="facebook"
+           href="https://www.facebook.com/jelian.marie.357/"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Visit Facebook profile">
+            <img src="FBlogo.jpg" alt="Facebook logo">
+        </a>
+
+        <div class="copyright">
+            <p>&copy; 2026 Paws & Pals. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
